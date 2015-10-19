@@ -1,0 +1,34 @@
+package string_test;
+
+public class StringTest {
+
+	public static void main(String[] args) {
+
+		System.out.println("Test1:");
+		String s1 = new String("Hello World!");
+		String s2 = s1;
+		s1 = s1 + " And welcome to Java!";
+		System.out.println(s1);
+		System.out.println(s2);
+		
+		System.out.println("\nTest2:");
+		String s3 = "Hello World!";
+		String s4 = "Hello World!";
+		String s5 = "Hello World! And welcome to Java!";
+		System.out.println(s2==s3);
+		System.out.println(s3==s4);
+		System.out.println(s1==s5);
+		
+		System.out.println("\nTest3:");
+		System.out.println(s2.equals(s3));
+		System.out.println(s1.compareTo(s5));
+		
+		System.out.println("\nTest4:");
+		String s6 = "expert";
+		String s7 = "EXpert";
+		System.out.println(s6.compareTo(s7));
+		System.out.println(s6.startsWith("ex"));
+		
+	}
+
+}
