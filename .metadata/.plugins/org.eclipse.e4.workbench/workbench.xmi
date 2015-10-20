@@ -233,7 +233,7 @@
       <children xsi:type="basic:PartStack" xmi:id="_6EUBMWgQEeWpOIYTZ92ldQ" elementId="PartStack@43e869ea" selectedElement="_oPpKMHLbEeWWl6YpP2ZeDg">
         <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_oPpKMHLbEeWWl6YpP2ZeDg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="StockDaoMap.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;StockDaoMap.java&quot; partName=&quot;StockDaoMap.java&quot; title=&quot;StockDaoMap.java&quot; tooltip=&quot;stock/src/main/java/edu/zju/cst/w3/StockDaoMap.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/stock/src/main/java/edu/zju/cst/w3/StockDaoMap.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3213&quot; selectionTopPixel=&quot;1767&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;StockDaoMap.java&quot; partName=&quot;StockDaoMap.java&quot; title=&quot;StockDaoMap.java&quot; tooltip=&quot;stock/src/main/java/edu/zju/cst/w3/StockDaoMap.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/stock/src/main/java/edu/zju/cst/w3/StockDaoMap.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3001&quot; selectionTopPixel=&quot;1326&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -584,7 +584,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wVMgtlvKEeWWBped5oVGAg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_UKqcp3aDEeWfHcuVAtD0Tw" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_wVNxTVvKEeWWBped5oVGAg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ZLQPYHaIEeWb09DRWv6IIw" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_wVNxTVvKEeWWBped5oVGAg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wVMgxFvKEeWWBped5oVGAg" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -620,7 +620,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wVMhBlvKEeWWBped5oVGAg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_UKqcsXaDEeWfHcuVAtD0Tw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_wVNwx1vKEeWWBped5oVGAg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ZLSEkHaIEeWb09DRWv6IIw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_wVNwx1vKEeWWBped5oVGAg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wVMhEVvKEeWWBped5oVGAg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
