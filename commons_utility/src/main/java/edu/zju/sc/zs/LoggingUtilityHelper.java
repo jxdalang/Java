@@ -11,6 +11,9 @@ import java.util.Date;
  * Thread Safety:
  * This class is immutable and thread safe when array parameters
  * passed to it are used by the caller in thread safe manner.
+ *
+ * @author ZS
+ * @version 1.0
  */
 class LoggingUtilityHelper {
     /**
@@ -40,8 +43,7 @@ class LoggingUtilityHelper {
      *            the values of input parameters (not null)
      * @return the constructed log message
      */
-    static String getInputParametersMessage(String[] paramNames,
-            Object[] paramValues) {
+    static String getInputParametersMessage(String[] paramNames, Object[] paramValues) {
         StringBuilder sb = new StringBuilder("Input parameters [");
         for (int i = 0; i < paramNames.length; i++) {
             if (i != 0) {
@@ -67,8 +69,7 @@ class LoggingUtilityHelper {
         StringBuilder sb = new StringBuilder("Exiting method [");
         sb.append(signature).append("]");
         if (entranceTimestamp != null) {
-            sb.append(", time spent in the method: ")
-                    .append(new Date().getTime() - entranceTimestamp.getTime())
+            sb.append(", time spent in the method: ").append(new Date().getTime() - entranceTimestamp.getTime())
                     .append(" milliseconds");
         }
         sb.append(".");
@@ -97,8 +98,7 @@ class LoggingUtilityHelper {
      */
     static String getExceptionMessage(String signature, Throwable exception) {
         StringBuilder sb = new StringBuilder("Error in method [");
-        sb.append(signature).append("], details: ")
-                .append(exception.getMessage());
+        sb.append(signature).append("], details: ").append(exception.getMessage());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(out);
         ps.println();

@@ -13,6 +13,9 @@ import java.util.Map;
  * Thread Safety:
  * This class is immutable and thread safe when collection parameters
  * passed to it are used by the caller in thread safe manner.
+ *
+ * @author ZS
+ * @version 1.0
  */
 public class ValidationUtility {
     /**
@@ -25,16 +28,15 @@ public class ValidationUtility {
      * Checks whether the given value is not null.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is null
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is null
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotNull(Object value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotNull(Object value, String name, Class<T> exceptionClass) throws T {
         if (value == null) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not be null");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not be null");
         }
     }
 
@@ -43,16 +45,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if value is null, exception is not thrown.
      *
-	 * @throws T if the given value is empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotEmpty(String value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotEmpty(String value, String name, Class<T> exceptionClass)
+        throws T {
         if (value != null && value.equals("")) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not be empty");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not be empty");
         }
     }
 
@@ -61,16 +63,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if value is null, exception is not thrown.
      *
-	 * @throws T if the given value is empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotEmptyAfterTrimming(
-            String value, String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotEmptyAfterTrimming(String value, String name,
+            Class<T> exceptionClass) throws T {
         if (value != null && value.trim().equals("")) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not be empty after trimming");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not be empty after trimming");
         }
     }
 
@@ -78,13 +80,14 @@ public class ValidationUtility {
      * Checks whether the given string value is not null, nor empty (without trimming).
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is null or empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is null or empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotNullNorEmpty(
-            String value, String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotNullNorEmpty(String value, String name, Class<T> exceptionClass)
+        throws T {
         checkNotNull(value, name, exceptionClass);
         checkNotEmpty(value, name, exceptionClass);
     }
@@ -93,13 +96,14 @@ public class ValidationUtility {
      * Checks whether the given string value is not null, nor empty (after trimming).
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is null or empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is null or empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotNullNorEmptyAfterTrimming(
-            String value, String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotNullNorEmptyAfterTrimming(String value, String name,
+            Class<T> exceptionClass) throws T {
         checkNotNull(value, name, exceptionClass);
         checkNotEmptyAfterTrimming(value, name, exceptionClass);
     }
@@ -109,18 +113,18 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if value is null, exception is thrown.
      *
-	 * @throws T if the given value is not an instance of the expected type
-	 * @param expectedType the expected type of the value
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not an instance of the expected type
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param expectedType the expected type of the value
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkInstance(Object value,
-            Class < ? > expectedType, String name, Class < T > exceptionClass)
-        throws T {
+    public static <T extends Throwable> void checkInstance(Object value, Class<?> expectedType, String name,
+            Class<T> exceptionClass) throws T {
         if (!expectedType.isInstance(value)) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be an instance of " + expectedType.getName());
+            throw ExceptionHelper.constructException(exceptionClass,
+                    name + " should be an instance of " + expectedType.getName());
         }
     }
 
@@ -128,20 +132,18 @@ public class ValidationUtility {
      * Checks whether the given value is null or an instance of the specified type.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not null and not an instance of the expected type
-	 * @param expectedType the expected type of the value
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not null and not an instance of the expected type
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param expectedType the expected type of the value
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNullOrInstance(
-            Object value, Class < ? > expectedType, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNullOrInstance(Object value, Class<?> expectedType, String name,
+            Class<T> exceptionClass) throws T {
         if (value != null && !expectedType.isInstance(value)) {
-            throw ExceptionHelper.constructException(
-                    exceptionClass,
-                    name + " should be null or an instance of "
-                            + expectedType.getName());
+            throw ExceptionHelper.constructException(exceptionClass,
+                    name + " should be null or an instance of " + expectedType.getName());
         }
     }
 
@@ -150,16 +152,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if file is null, exception is not thrown.
      *
-	 * @throws T if the given file value represents a not existing file or directory
-	 * @param file the File instance to be checked
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
+     * @throws T if the given file value represents a not existing file or directory
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param file the File instance to be checked
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
      */
-    public static < T extends Throwable > void checkExists(File file,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkExists(File file, String name, Class<T> exceptionClass) throws T {
         if (file != null && !file.exists()) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should point to an existing file or directory");
+            throw ExceptionHelper.constructException(exceptionClass,
+                    name + " should point to an existing file or directory");
         }
     }
 
@@ -168,16 +170,15 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if file is null, exception is not thrown.
      *
-	 * @throws T if the given file value represents a not existing file
-	 * @param file the File instance to be checked
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
+     * @throws T if the given file value represents a not existing file
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param file the File instance to be checked
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
      */
-    public static < T extends Throwable > void checkIsFile(File file,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkIsFile(File file, String name, Class<T> exceptionClass) throws T {
         if (file != null && !file.isFile()) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should point to an existing file");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should point to an existing file");
         }
     }
 
@@ -186,16 +187,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if file is null, exception is not thrown.
      *
-	 * @throws T if the given file value represents a not existing directory
-	 * @param file the File instance to be checked
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
+     * @throws T if the given file value represents a not existing directory
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param file the File instance to be checked
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
      */
-    public static < T extends Throwable > void checkIsDirectory(File file,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkIsDirectory(File file, String name, Class<T> exceptionClass)
+        throws T {
         if (file != null && !file.isDirectory()) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should point to an existing directory");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should point to an existing directory");
         }
     }
 
@@ -204,17 +205,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if collection is null, exception is not thrown.
      *
-	 * @throws T if the given collection is empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param collection the collection to be checked
+     * @throws T if the given collection is empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param collection the collection to be checked
      */
-    public static < T extends Throwable > void checkNotEmpty(
-            Collection < ? > collection, String name, Class < T > exceptionClass)
-        throws T {
+    public static <T extends Throwable> void checkNotEmpty(Collection<?> collection, String name,
+            Class<T> exceptionClass) throws T {
         if (collection != null && collection.isEmpty()) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not be empty");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not be empty");
         }
     }
 
@@ -222,14 +222,14 @@ public class ValidationUtility {
      * Checks whether the given collection is not null, nor empty.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given collection is null or empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param collection the collection to be checked
+     * @throws T if the given collection is null or empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param collection the collection to be checked
      */
-    public static < T extends Throwable > void checkNotNullNorEmpty(
-            Collection < ? > collection, String name, Class < T > exceptionClass)
-        throws T {
+    public static <T extends Throwable> void checkNotNullNorEmpty(Collection<?> collection, String name,
+            Class<T> exceptionClass) throws T {
         checkNotNull(collection, name, exceptionClass);
         checkNotEmpty(collection, name, exceptionClass);
     }
@@ -239,16 +239,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if map is null, exception is not thrown.
      *
-	 * @throws T if the given map is empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param map the map to be checked
+     * @throws T if the given map is empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param map the map to be checked
      */
-    public static < T extends Throwable > void checkNotEmpty(Map < ? , ? > map,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotEmpty(Map<?, ?> map, String name, Class<T> exceptionClass)
+        throws T {
         if (map != null && map.isEmpty()) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not be empty");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not be empty");
         }
     }
 
@@ -256,13 +256,13 @@ public class ValidationUtility {
      * Checks whether the given map is not null, nor empty.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given map is null or empty
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param map the map to be checked
+     * @throws T if the given map is null or empty
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param map the map to be checked
      */
-    public static < T extends Throwable > void checkNotNullNorEmpty(
-            Map < ? , ? > map, String name, Class < T > exceptionClass)
+    public static <T extends Throwable> void checkNotNullNorEmpty(Map<?, ?> map, String name, Class<T> exceptionClass)
         throws T {
         checkNotNull(map, name, exceptionClass);
         checkNotEmpty(map, name, exceptionClass);
@@ -273,14 +273,14 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if collection is null, exception is not thrown.
      *
-	 * @throws T if the given collection contains null element
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param collection the collection to be checked
+     * @throws T if the given collection contains null element
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param collection the collection to be checked
      */
-    public static < T extends Throwable > void checkNotNullElements(
-            Collection < ? > collection, String name, Class < T > exceptionClass)
-        throws T {
+    public static <T extends Throwable> void checkNotNullElements(Collection<?> collection, String name,
+            Class<T> exceptionClass) throws T {
         if (collection == null) {
             return;
         }
@@ -292,8 +292,7 @@ public class ValidationUtility {
             }
         }
         if (containsNull) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not contain null");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not contain null");
         }
     }
 
@@ -303,15 +302,15 @@ public class ValidationUtility {
      * the specified exception is thrown. Note that if collection is null,
      * exception is not thrown.
      *
-	 * @throws T if the given collection contains an empty element (string, collection or map)
-	 * @param trimStrings true if strings should be trimmed before emptiness check, false otherwise
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param collection the collection to be checked
+     * @throws T if the given collection contains an empty element (string, collection or map)
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param trimStrings true if strings should be trimmed before emptiness check, false otherwise
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param collection the collection to be checked
      */
-    public static < T extends Throwable > void checkNotEmptyElements(
-            Collection < ? > collection, boolean trimStrings, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotEmptyElements(Collection<?> collection, boolean trimStrings,
+            String name, Class<T> exceptionClass) throws T {
         if (collection == null) {
             return;
         }
@@ -327,20 +326,19 @@ public class ValidationUtility {
                     break;
                 }
             } else if (Collection.class.isInstance(element)) {
-                if (((Collection < ? >) element).isEmpty()) {
+                if (((Collection<?>) element).isEmpty()) {
                     containsEmpty = true;
                     break;
                 }
             } else if (Map.class.isInstance(element)) {
-                if (((Map < ? , ? >) element).isEmpty()) {
+                if (((Map<?, ?>) element).isEmpty()) {
                     containsEmpty = true;
                     break;
                 }
             }
         }
         if (containsEmpty) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not contain empty elements");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not contain empty elements");
         }
     }
 
@@ -349,17 +347,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if map is null, exception is not thrown.
      *
-	 * @throws T if the given map contains null key
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param map the value to be checked
+     * @throws T if the given map contains null key
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param map the value to be checked
      */
-    public static < T extends Throwable > void checkNotNullKeys(
-            Map < ? , ? > map, String name, Class < T > exceptionClass)
+    public static <T extends Throwable> void checkNotNullKeys(Map<?, ?> map, String name, Class<T> exceptionClass)
         throws T {
         if (map != null && map.containsKey(null)) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not contain null key");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not contain null key");
         }
     }
 
@@ -368,17 +365,16 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if map is null, exception is not thrown.
      *
-	 * @throws T if the given map contains null value
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param map the map to be checked
+     * @throws T if the given map contains null value
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param map the map to be checked
      */
-    public static < T extends Throwable > void checkNotNullValues(
-            Map < ? , ? > map, String name, Class < T > exceptionClass)
+    public static <T extends Throwable> void checkNotNullValues(Map<?, ?> map, String name, Class<T> exceptionClass)
         throws T {
         if (map != null && map.containsValue(null)) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not contain null value");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not contain null value");
         }
     }
 
@@ -387,15 +383,15 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if map is null, exception is not thrown.
      *
-	 * @throws T if the given map contains an empty key (string, collection or map)
-	 * @param trimStrings true if strings should be trimmed before emptiness check, false otherwise
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param map the map to be checked
+     * @throws T if the given map contains an empty key (string, collection or map)
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param trimStrings true if strings should be trimmed before emptiness check, false otherwise
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param map the map to be checked
      */
-    public static < T extends Throwable > void checkNotEmptyKeys(
-            Map < ? , ? > map, boolean trimStrings, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotEmptyKeys(Map<?, ?> map, boolean trimStrings, String name,
+            Class<T> exceptionClass) throws T {
         if (map == null) {
             return;
         }
@@ -411,20 +407,19 @@ public class ValidationUtility {
                     break;
                 }
             } else if (Collection.class.isInstance(key)) {
-                if (((Collection < ? >) key).isEmpty()) {
+                if (((Collection<?>) key).isEmpty()) {
                     containsEmpty = true;
                     break;
                 }
             } else if (Map.class.isInstance(key)) {
-                if (((Map < ? , ? >) key).isEmpty()) {
+                if (((Map<?, ?>) key).isEmpty()) {
                     containsEmpty = true;
                     break;
                 }
             }
         }
         if (containsEmpty) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not contain empty keys");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not contain empty keys");
         }
     }
 
@@ -433,15 +428,15 @@ public class ValidationUtility {
      * And if this condition is not met, the specified exception is thrown.
      * Note that if map is null, exception is not thrown.
      *
-	 * @throws T if the given map contains an empty value (string, collection or map)
-	 * @param trimStrings true if strings should be trimmed before emptiness check, false otherwise
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param map the map to be checked
+     * @throws T if the given map contains an empty value (string, collection or map)
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param trimStrings true if strings should be trimmed before emptiness check, false otherwise
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param map the map to be checked
      */
-    public static < T extends Throwable > void checkNotEmptyValues(
-            Map < ? , ? > map, boolean trimStrings, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotEmptyValues(Map<?, ?> map, boolean trimStrings, String name,
+            Class<T> exceptionClass) throws T {
         if (map == null) {
             return;
         }
@@ -457,20 +452,19 @@ public class ValidationUtility {
                     break;
                 }
             } else if (Collection.class.isInstance(value)) {
-                if (((Collection < ? >) value).isEmpty()) {
+                if (((Collection<?>) value).isEmpty()) {
                     containsEmpty = true;
                     break;
                 }
             } else if (Map.class.isInstance(value)) {
-                if (((Map < ? , ? >) value).isEmpty()) {
+                if (((Map<?, ?>) value).isEmpty()) {
                     containsEmpty = true;
                     break;
                 }
             }
         }
         if (containsEmpty) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not contain empty values");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not contain empty values");
         }
     }
 
@@ -478,16 +472,16 @@ public class ValidationUtility {
      * Checks whether the given value is negative.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not negative
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not negative
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNegative(double value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNegative(double value, String name, Class<T> exceptionClass)
+        throws T {
         if (value >= 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be negative");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be negative");
         }
     }
 
@@ -495,16 +489,16 @@ public class ValidationUtility {
      * Checks whether the given value is positive.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not positive
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not positive
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkPositive(double value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkPositive(double value, String name, Class<T> exceptionClass)
+        throws T {
         if (value <= 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be positive");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be positive");
         }
     }
 
@@ -512,16 +506,16 @@ public class ValidationUtility {
      * Checks whether the given value is not negative.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is negative
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is negative
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotNegative(double value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotNegative(double value, String name, Class<T> exceptionClass)
+        throws T {
         if (value < 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be not negative");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be not negative");
         }
     }
 
@@ -529,16 +523,16 @@ public class ValidationUtility {
      * Checks whether the given value is not positive.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is positive
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is positive
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotPositive(double value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotPositive(double value, String name, Class<T> exceptionClass)
+        throws T {
         if (value > 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be not positive");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be not positive");
         }
     }
 
@@ -546,16 +540,15 @@ public class ValidationUtility {
      * Checks whether the given value is not equal to zero.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is equal to 0
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is equal to 0
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotZero(double value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotZero(double value, String name, Class<T> exceptionClass) throws T {
         if (value == 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not be equal to 0");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not be equal to 0");
         }
     }
 
@@ -564,25 +557,26 @@ public class ValidationUtility {
      * if inclusive is true) than the specified number.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not greater than (not greater than and not equal to, if inclusive is true) than the specified number
-	 * @param number the number the value should be compared to
-	 * @param inclusive true if "greater than or equal to" check should be performed, false if "greater than" check should be performed
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not greater than (not greater than and not equal to,
+     * if inclusive is true) than the specified number
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param number the number the value should be compared to
+     * @param inclusive true if "greater than or equal to" check should be performed,
+     * false if "greater than" check should be performed
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkGreaterThan(double value,
-            double number, boolean inclusive, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkGreaterThan(double value, double number, boolean inclusive,
+            String name, Class<T> exceptionClass) throws T {
         if (inclusive) {
             if (value < number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be greater than or equal to " + number);
+                throw ExceptionHelper.constructException(exceptionClass,
+                        name + " should be greater than or equal to " + number);
             }
         } else {
             if (value <= number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be greater than " + number);
+                throw ExceptionHelper.constructException(exceptionClass, name + " should be greater than " + number);
             }
         }
     }
@@ -592,25 +586,26 @@ public class ValidationUtility {
      * if inclusive is true) than the specified number.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not less than (not less than and not equal to, if inclusive is true) than the specified number
-	 * @param number the number the value should be compared to
-	 * @param inclusive true if "less than or equal to" check should be performed, false if "less than" check should be performed
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not less than (not less than and not equal to,
+     * if inclusive is true) than the specified number
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param number the number the value should be compared to
+     * @param inclusive true if "less than or equal to" check should be performed,
+     * false if "less than" check should be performed
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkLessThan(double value,
-            double number, boolean inclusive, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkLessThan(double value, double number, boolean inclusive, String name,
+            Class<T> exceptionClass) throws T {
         if (inclusive) {
             if (value > number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be less than or equal to " + number);
+                throw ExceptionHelper.constructException(exceptionClass,
+                        name + " should be less than or equal to " + number);
             }
         } else {
             if (value >= number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be less than " + number);
+                throw ExceptionHelper.constructException(exceptionClass, name + " should be less than " + number);
             }
         }
     }
@@ -619,18 +614,18 @@ public class ValidationUtility {
      * Checks whether the given value is in the specified range.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is out of the specified range
-	 * @param name the name associated with the value
-	 * @param toInclusive true if end value is included into the range, false otherwise
-	 * @param from the start value of the range
-	 * @param exceptionClass the exception class
-	 * @param to the end value of the range
-	 * @param fromInclusive true if start value is included into the range, false otherwise
-	 * @param value the value to be checked
+     * @throws T if the given value is out of the specified range
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param toInclusive true if end value is included into the range, false otherwise
+     * @param from the start value of the range
+     * @param exceptionClass the exception class
+     * @param to the end value of the range
+     * @param fromInclusive true if start value is included into the range, false otherwise
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkInRange(double value,
-            double from, double to, boolean fromInclusive, boolean toInclusive,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkInRange(double value, double from, double to, boolean fromInclusive,
+            boolean toInclusive, String name, Class<T> exceptionClass) throws T {
         boolean vaild;
         if (fromInclusive) {
             vaild = (value >= from);
@@ -645,8 +640,7 @@ public class ValidationUtility {
             }
         }
         if (!vaild) {
-            String message = name + " should be in the range "
-                    + (fromInclusive ? "[" : "(") + from + ", " + to
+            String message = name + " should be in the range " + (fromInclusive ? "[" : "(") + from + ", " + to
                     + (toInclusive ? "]" : ")");
             throw ExceptionHelper.constructException(exceptionClass, message);
         }
@@ -656,16 +650,15 @@ public class ValidationUtility {
      * Checks whether the given value is negative.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not negative
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not negative
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNegative(long value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNegative(long value, String name, Class<T> exceptionClass) throws T {
         if (value >= 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be negative");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be negative");
         }
     }
 
@@ -673,16 +666,15 @@ public class ValidationUtility {
      * Checks whether the given value is positive.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not positive
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not positive
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkPositive(long value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkPositive(long value, String name, Class<T> exceptionClass) throws T {
         if (value <= 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be positive");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be positive");
         }
     }
 
@@ -690,16 +682,16 @@ public class ValidationUtility {
      * Checks whether the given value is not negative.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is negative
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is negative
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotNegative(long value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotNegative(long value, String name, Class<T> exceptionClass)
+        throws T {
         if (value < 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be not negative");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be not negative");
         }
     }
 
@@ -707,16 +699,16 @@ public class ValidationUtility {
      * Checks whether the given value is not positive.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is positive
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is positive
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotPositive(long value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotPositive(long value, String name, Class<T> exceptionClass)
+        throws T {
         if (value > 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should be not positive");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should be not positive");
         }
     }
 
@@ -724,42 +716,43 @@ public class ValidationUtility {
      * Checks whether the given value is not equal to zero.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is equal to 0
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is equal to 0
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkNotZero(long value,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkNotZero(long value, String name, Class<T> exceptionClass) throws T {
         if (value == 0) {
-            throw ExceptionHelper.constructException(exceptionClass, name
-                    + " should not be equal to 0");
+            throw ExceptionHelper.constructException(exceptionClass, name + " should not be equal to 0");
         }
     }
 
     /**
-     * Checks whether the given value is greater than (greater than or equal to, if inclusive is true) than the specified number.
+     * Checks whether the given value is greater than (greater than or equal to,
+     * if inclusive is true) than the specified number.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not greater than (not greater than and not equal to, if inclusive is true) than the specified number
-	 * @param number the number the value should be compared to
-	 * @param inclusive true if "greater than or equal to" check should be performed, false if "greater than" check should be performed
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not greater than (not greater than and not equal to,
+     * if inclusive is true) than the specified number
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param number the number the value should be compared to
+     * @param inclusive true if "greater than or equal to" check should be performed,
+     * false if "greater than" check should be performed
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkGreaterThan(long value,
-            long number, boolean inclusive, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkGreaterThan(long value, long number, boolean inclusive, String name,
+            Class<T> exceptionClass) throws T {
         if (inclusive) {
             if (value < number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be greater than or equal to " + number);
+                throw ExceptionHelper.constructException(exceptionClass,
+                        name + " should be greater than or equal to " + number);
             }
         } else {
             if (value <= number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be greater than " + number);
+                throw ExceptionHelper.constructException(exceptionClass, name + " should be greater than " + number);
             }
         }
     }
@@ -769,25 +762,26 @@ public class ValidationUtility {
      * if inclusive is true) than the specified number.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is not less than (not less than and not equal to, if inclusive is true) than the specified number
-	 * @param number the number the value should be compared to
-	 * @param inclusive true if "less than or equal to" check should be performed, false if "less than" check should be performed
-	 * @param name the name associated with the value
-	 * @param exceptionClass the exception class
-	 * @param value the value to be checked
+     * @throws T if the given value is not less than (not less than and not equal to,
+     * if inclusive is true) than the specified number
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param number the number the value should be compared to
+     * @param inclusive true if "less than or equal to" check should be performed,
+     * false if "less than" check should be performed
+     * @param name the name associated with the value
+     * @param exceptionClass the exception class
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkLessThan(long value,
-            long number, boolean inclusive, String name,
-            Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkLessThan(long value, long number, boolean inclusive, String name,
+            Class<T> exceptionClass) throws T {
         if (inclusive) {
             if (value > number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be less than or equal to " + number);
+                throw ExceptionHelper.constructException(exceptionClass,
+                        name + " should be less than or equal to " + number);
             }
         } else {
             if (value >= number) {
-                throw ExceptionHelper.constructException(exceptionClass, name
-                        + " should be less than " + number);
+                throw ExceptionHelper.constructException(exceptionClass, name + " should be less than " + number);
             }
         }
     }
@@ -796,18 +790,18 @@ public class ValidationUtility {
      * Checks whether the given value is in the specified range.
      * And if this condition is not met, the specified exception is thrown.
      *
-	 * @throws T if the given value is out of the specified range
-	 * @param name the name associated with the value
-	 * @param toInclusive true if end value is included into the range, false otherwise
-	 * @param from the start value of the range
-	 * @param exceptionClass the exception class
-	 * @param to the end value of the range
-	 * @param fromInclusive true if start value is included into the range, false otherwise
-	 * @param value the value to be checked
+     * @throws T if the given value is out of the specified range
+     * @param <T> the type of the exception to be thrown when validation fails
+     * @param name the name associated with the value
+     * @param toInclusive true if end value is included into the range, false otherwise
+     * @param from the start value of the range
+     * @param exceptionClass the exception class
+     * @param to the end value of the range
+     * @param fromInclusive true if start value is included into the range, false otherwise
+     * @param value the value to be checked
      */
-    public static < T extends Throwable > void checkInRange(long value,
-            long from, long to, boolean fromInclusive, boolean toInclusive,
-            String name, Class < T > exceptionClass) throws T {
+    public static <T extends Throwable> void checkInRange(long value, long from, long to, boolean fromInclusive,
+            boolean toInclusive, String name, Class<T> exceptionClass) throws T {
         boolean vaild;
         if (fromInclusive) {
             vaild = (value >= from);
@@ -822,8 +816,7 @@ public class ValidationUtility {
             }
         }
         if (!vaild) {
-            String message = name + " should be in the range "
-                    + (fromInclusive ? "[" : "(") + from + ", " + to
+            String message = name + " should be in the range " + (fromInclusive ? "[" : "(") + from + ", " + to
                     + (toInclusive ? "]" : ")");
             throw ExceptionHelper.constructException(exceptionClass, message);
         }

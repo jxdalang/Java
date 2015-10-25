@@ -10,13 +10,16 @@ import org.apache.log4j.Priority;
  * This is a utility class that provides static methods for logging method entrance,
  * method exit and exception using Log4j library.
  * It allows to optionally log method input/output parameters and method execution time.
- * Exceptions are logged together with stack traces. 
+ * Exceptions are logged together with stack traces.
  * Default priority for method entrance/exit message is DEBUG,
  * for exceptions - ERROR; but both can be overridden.
  *
  * Thread Safety:
  * This class is immutable and thread safe when array parameters
  * passed to it are used by the caller in thread safe manner.
+ *
+ * @author ZS
+ * @version 1.0
  */
 public class Log4jUtility {
     /**
@@ -39,8 +42,7 @@ public class Log4jUtility {
      * @param logger
      *            the logger to be used (null if logging is not required to be performed)
      */
-    public static void logEntrance(Logger logger, String signature,
-            String[] paramNames, Object[] paramValues) {
+    public static void logEntrance(Logger logger, String signature, String[] paramNames, Object[] paramValues) {
         logEntrance(logger, signature, paramNames, paramValues, Level.DEBUG);
     }
 
@@ -59,16 +61,14 @@ public class Log4jUtility {
      * @param priority
      *            the logging priority to be used
      */
-    public static void logEntrance(Logger logger, String signature,
-            String[] paramNames, Object[] paramValues, Priority priority) {
+    public static void logEntrance(Logger logger, String signature, String[] paramNames, Object[] paramValues,
+            Priority priority) {
         if (logger == null) {
             return;
         }
-        logger.log(priority,
-                LoggingUtilityHelper.getMethodEntranceMessage(signature));
+        logger.log(priority, LoggingUtilityHelper.getMethodEntranceMessage(signature));
         if (paramNames != null) {
-            logger.log(priority, LoggingUtilityHelper
-                    .getInputParametersMessage(paramNames, paramValues));
+            logger.log(priority, LoggingUtilityHelper.getInputParametersMessage(paramNames, paramValues));
         }
     }
 
@@ -105,8 +105,7 @@ public class Log4jUtility {
      *            the value returned from the method (should contain 1 element with the returned value,
      *            or should be null if the method returns void)
      */
-    public static void logExit(Logger logger, String signature, Object[] value,
-            Date entranceTimestamp) {
+    public static void logExit(Logger logger, String signature, Object[] value, Date entranceTimestamp) {
         logExit(logger, signature, value, entranceTimestamp, Level.DEBUG);
     }
 
@@ -125,16 +124,14 @@ public class Log4jUtility {
      * @param priority
      *            the logging priority to be used
      */
-    public static void logExit(Logger logger, String signature, Object[] value,
-            Date entranceTimestamp, Priority priority) {
+    public static void logExit(Logger logger, String signature, Object[] value, Date entranceTimestamp,
+            Priority priority) {
         if (logger == null) {
             return;
         }
-        logger.log(priority, LoggingUtilityHelper.getMethodExitMessage(
-                signature, entranceTimestamp));
+        logger.log(priority, LoggingUtilityHelper.getMethodExitMessage(signature, entranceTimestamp));
         if (value != null) {
-            logger.log(priority,
-                    LoggingUtilityHelper.getOutputValueMessage(value[0]));
+            logger.log(priority, LoggingUtilityHelper.getOutputValueMessage(value[0]));
         }
     }
 
@@ -153,8 +150,7 @@ public class Log4jUtility {
      *            the logger to be used (null if logging is not required to be performed)
      * @return the logged exception
      */
-    public static < T extends Throwable > T logException(Logger logger,
-            String signature, T exception) {
+    public static <T extends Throwable> T logException(Logger logger, String signature, T exception) {
         return logException(logger, signature, exception, Level.ERROR);
     }
 
@@ -174,11 +170,10 @@ public class Log4jUtility {
      *            the logging priority to be used
      * @return the logged exception
      */
-    public static < T extends Throwable > T logException(Logger logger,
-            String signature, T exception, Priority priority) {
+    public static <T extends Throwable> T logException(Logger logger, String signature, T exception,
+            Priority priority) {
         if (logger != null) {
-            logger.log(priority, LoggingUtilityHelper.getExceptionMessage(
-                    signature, exception));
+            logger.log(priority, LoggingUtilityHelper.getExceptionMessage(signature, exception));
         }
 
         return exception;

@@ -7,10 +7,13 @@ import java.lang.reflect.InvocationTargetException;
  * This is a static helper class that provides methods for
  * constructing exception instances using reflection.
  * It is used by ValidationUtility, PropertiesUtility and JDBCUtility.
- * 
+ *
  * Thread Safety:
  * This class is immutable and thread safe when array parameters
  * passed to it are used by the caller in thread safe manner.
+ *
+ * @author ZS
+ * @version 1.0
 */
 class ExceptionHelper {
     /**
@@ -30,9 +33,8 @@ class ExceptionHelper {
      *            the message
      * @return the constructed exception instance (not null)
      */
-    static < T extends Throwable > T constructException(
-            Class < T > exceptionClass, String message) {
-        Constructor < T > constructor;
+    static <T extends Throwable> T constructException(Class<T> exceptionClass, String message) {
+        Constructor<T> constructor;
         try {
             constructor = exceptionClass.getConstructor(String.class);
             T result = constructor.newInstance(message);
@@ -66,11 +68,9 @@ class ExceptionHelper {
      *            the message
      * @return the constructed exception instance (not null)
      */
-    static < T extends Throwable > T constructException(
-            Class < T > exceptionClass, String message, Throwable cause) {
+    static <T extends Throwable> T constructException(Class<T> exceptionClass, String message, Throwable cause) {
         try {
-            Constructor < T > constructor = exceptionClass.getConstructor(
-                    String.class, Throwable.class);
+            Constructor<T> constructor = exceptionClass.getConstructor(String.class, Throwable.class);
             T result = constructor.newInstance(message, cause);
             return result;
         } catch (NoSuchMethodException e) {
@@ -86,6 +86,6 @@ class ExceptionHelper {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-		return null;
-	}
+        return null;
+    }
 }
