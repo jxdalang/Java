@@ -25,7 +25,7 @@ public class TestLog4jUtility {
         logger = Logger.getLogger(getClass());
         PatternLayout myLayout = new PatternLayout();
         FileAppender fileAppender = new FileAppender(myLayout,
-                "testing log(Log4jUtility only).txt");
+                "TestLog4jUtility-log.log");
         logger.addAppender(fileAppender);
     }
 
