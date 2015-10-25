@@ -2,11 +2,15 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="gbg"/>
+			<item value="wewe"/>
 			<item value="edu.zju.sc.zs"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="wfdwf"/>
+			<item value="wewewe"/>
 			<item value="commons_utility"/>
 		</list>
 		<list key="projectNameTemplate">

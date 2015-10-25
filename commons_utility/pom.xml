@@ -3,7 +3,8 @@
   <groupId>edu.zju.sc.zs</groupId>
   <artifactId>commons_utility</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-<reporting>
+  
+	<reporting>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -22,6 +23,7 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -39,32 +41,10 @@
 			<version>4.12</version>
 		</dependency>
 	</dependencies>
+	
 	<properties>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<checkstyle.config.location>src/config/dev_checks.xml</checkstyle.config.location>  
 	</properties>
-	<build>
-		<pluginManagement>
-			<plugins>
-				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
-					<version>3.1</version> <configuration> <source>1.8</source> <target>1.8</target> 
-					</configuration> </plugin> -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>2.3</version>
-					<configuration>
-						<configLocation>src/config/dev_checks.xml</configLocation>
-						<enableRSS>false</enableRSS>
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>checkstyle</groupId>
-							<artifactId>checkstyle</artifactId>
-							<version>4.4</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+	
 </project>
