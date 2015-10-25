@@ -2,10 +2,12 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="edu.zju.sc.zs"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="commons_utility"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -56,6 +58,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\Workspace\Java\coin"/>
 			<item value="D:\Workspace\Java\rolldice"/>
 			<item value="D:\Workspace\Java\coin\pom.xml"/>
 			<item value="D:\Workspace\Java\hashtest"/>
