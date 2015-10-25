@@ -4,7 +4,7 @@
 
 *.pydevproject
 .project
-.metadata
+./.metadata/
 bin/
 tmp/
 *.tmp
@@ -214,3 +214,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+.metadata/.mylyn/.tasks.xml.zip
+.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
