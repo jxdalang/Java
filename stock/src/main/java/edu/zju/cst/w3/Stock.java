@@ -12,7 +12,7 @@ import java.util.Date;
 public class Stock {
 	//股票代码
 	String id;
-	//:股票名称
+	//股票名称
 	String name;
 	//股票收盘价
 	double closingPrice;
