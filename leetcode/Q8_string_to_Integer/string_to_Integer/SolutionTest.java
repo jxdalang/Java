@@ -41,7 +41,7 @@ public class SolutionTest {
 
     @Test
     public void test() {
-        //test myAtoi
+        //test myAtoi()
         assertEquals(0, s.myAtoi(""));
         assertEquals(0, s.myAtoi("+"));
         assertEquals(123, s.myAtoi("123"));
@@ -50,7 +50,7 @@ public class SolutionTest {
         assertEquals(123, s.myAtoi(" a df-+-123 sad"));
         assertEquals(-123, s.myAtoi("-n +vd%!+-++123 sa d"));
         
-        //test myAtoi_limited_convert
+        //test myAtoi_limited_convert()
         assertEquals(0, s.myAtoi_limited_convert(""));
         assertEquals(0, s.myAtoi_limited_convert("+"));
         assertEquals(123, s.myAtoi_limited_convert("123"));
