@@ -6,7 +6,6 @@
 package generate_parentheses;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -23,23 +22,21 @@ For example, given n = 3, a solution set is:
  */
 public class Solution {
     public List<String> generateParenthesis(int n) {
-        List<String> ret = new ArrayList<>();
-        if (n == 1) {
-            ret.add("()");
-            return ret;
+        List<String> result = new ArrayList<String>();
+        if (n == 0) {
+            result.add("");
         } else {
-            ret = generateParenthesis(n - 1);
-            HashSet<String> new_strs = new HashSet<>();
-            for (String s : ret) {
+            for (int i = n - 1; i >= 0; i--) {
+                List<String> insertSub = generateParenthesis(i);
+                List<String> tailSub = generateParenthesis(n - 1 - i);
+                for (String insert : insertSub) {
+                    for (String tail : tailSub) {
+                        result.add("(" + insert + ")" + tail);
+                    }
+                }
 
-                new_strs.add("(" + s + ")");
-                new_strs.add("()" + s);
-                new_strs.add(s + "()");
             }
-            ret.clear();
-            ret.addAll(new_strs);
-            return ret;
         }
+        return result;
     }
-
 }
