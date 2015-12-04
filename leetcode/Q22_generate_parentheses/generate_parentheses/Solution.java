@@ -20,17 +20,32 @@ Given n pairs of parentheses, write a function to generate all combinations of w
 For example, given n = 3, a solution set is:
 "((()))", "(()())", "(())()", "()(())", "()()()"
  */
+/**
+一个solution的要求：
+由n个'('和n个')'要组成的一个长度为2n的字符串，且该字符串从左向右看时不会出现'('比')'少的情况，这就能保证不会出现无法匹配的'('
+
+解题思路：在空字符串尾逐个放入圆括号，保证放入的'('比')'多，按此顺序找出所有的解。
+即：
+先放入n个'('，然后剩下的放入')'，得到第一个解
+先放入n-1个'('，剩下的1个'('也优先放入（但不能与第一个解重复了），那么第二个解必然是n-1个'('+一个')'+1个'('+n-1个')'
+第三个解就是n-1个'('+2个')'+1个'('+n-2个')'
+...
+以此类推
+
+这里组成解集的顺序是：所有'('在字符串中索引的和——按从小到大
+比如"((()))"中'('的索引是0、1、2，而"(()())"中'('的索引是0、1、3，所以"((()))"在前
+ */
 public class Solution {
     public List<String> generateParenthesis(int n) {
         List<String> list = new LinkedList<String>();
         // 调用回溯方法求解，从初始str=空字符串开始寻找解
-        backtrack(list, "", 0, 0, n);
+        addParenthesis(list, "", 0, 0, n);
         return list;
     }
 
-    private void backtrack(List<String> list, String str, int open, int close, int n) {
+    private void addParenthesis(List<String> list, String str, int open, int close, int n) {
         // open和close分别记录当前传入的str中'('和')'的个数
-        // n是需要使用的括号对个数
+        // n是目标使用的括号对个数
 
         // 如果str中已经有n对括号了，说明str已经是一个有效的解，将其加入list中
         if (str.length() == n * 2) {
@@ -38,15 +53,15 @@ public class Solution {
             return;
         }
 
-        // 按照回溯的方法找出所有可能的解，并且总是优先尝试放入'('，这样就能保证每个'('后面肯定会有一个')'与其对应
+        // 放入'('
         if (open < n)
             // 递归调用
-            backtrack(list, str + '(', open + 1, close, n);
-        
-        // 保证每个左、右括号个数相等
+            addParenthesis(list, str + '(', open + 1, close, n);
+
+        // 放入')'时必须保证其个数不超过'('
         if (close < open)
             // 递归调用
-            backtrack(list, str + ')', open, close + 1, n);
+            addParenthesis(list, str + ')', open, close + 1, n);
 
         return;
     }
