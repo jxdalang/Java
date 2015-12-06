@@ -73,5 +73,24 @@ public class Reflection_look_inside_a_class {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+     // 3-利用反射调用任意方法
+        try {
+            Method m_toString2 =c.getDeclaredMethod("toString");
+            System.out.println(m_toString2.invoke(p));  //相当于调用了p.toString()
+        } catch (NoSuchMethodException | SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
     }
 }
