@@ -26,7 +26,8 @@ Input: numbers={2, 7, 11, 15}, target=9
 Output: index1=1, index2=2
  */
 public class Solution {
-    // 只遍历一遍数组的O(n)解法
+    // O(n)解法有两种，下面这种在解有且只有一个的时候比较好，无需对数组排序
+    // 另外一种解法要先对数组排序，然后用头尾两个指针从两头逼近，可以找出多对解，详见Q15
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         HashMap<Integer, Integer> pair = new HashMap<>();
