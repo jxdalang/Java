@@ -39,7 +39,7 @@ public class Solution {
         // 对数组排序
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; i++) {
-            // 如果当前元素和前个元素相等，直接跳过，不然可能会得到相同的解
+            // 如果当前元素和前个元素相等，直接跳过，不然可能会得到相同的解，当然第一次不能判断
             if (i > 0 && nums[i] == nums[i - 1])
                 continue;
 
@@ -66,15 +66,15 @@ public class Solution {
 
         int left = 0, right = nums.length - 1;
         // 记录上一个解的左元素的值，用于检测重复，初值设成MAX_VALUE是因为开始时左边元素是数组最小值，不可能与MAX_VALUE相等
-        int last_solution = Integer.MAX_VALUE;
+        int last_solution_left = Integer.MAX_VALUE;
         // 左、右两个指针从已排序的数组两端向中间逼近
         while (left < right) {
             if (nums[left] + nums[right] == target) {
                 // 如果找到解，先判断和前一个解是否相同
-                if (nums[left] != last_solution) {
+                if (nums[left] != last_solution_left) {
                     // 如果和上一个解不同，则记录并更新last_solution
                     ret.add(new int[] { nums[left], nums[right] });
-                    last_solution = nums[left];
+                    last_solution_left = nums[left];
                 }
                 // 左指针+1，继续扫描数组
                 left++;
