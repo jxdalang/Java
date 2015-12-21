@@ -20,7 +20,7 @@ public class Test {
         modelduck.performQuack();
         modelduck.performFly();
         // 在运行时改变对象的行为
-        System.out.println("Now i'm equipped with rocket.");
+        System.out.println("Now I'm equipped with rocket.");
         modelduck.setFlyBehavior(new FlyWithRocket());
         modelduck.performFly();
     }
