@@ -32,7 +32,7 @@ public class Mocha extends Condiment {
     @Override
     public String getDescription() {
         // TODO Auto-generated method stub
-        return beverage.getDescription()+" + Mocha";
+        return beverage.getDescription() + " + Mocha";
     }
 
     /*
@@ -45,7 +45,7 @@ public class Mocha extends Condiment {
     @Override
     public double cost() {
         // TODO Auto-generated method stub
-        return beverage.cost()+0.20;
+        return beverage.cost() + 0.20;
     }
 
 }
