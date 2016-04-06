@@ -31,7 +31,7 @@ public class JDBCmySQLTest {
                 System.out.println("----------------");
                 System.out.println(" ID\t\tNAME\tSEX");
                 while (res.next()) {
-                    System.out.println(res.getString(1) + "\t" + res.getString(2) + "\t" + res.getString(3));
+                    System.out.println(res.getString("id") + "\t" + res.getString("name") + "\t" + res.getString("sex"));
                 }
             }
 
