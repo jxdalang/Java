@@ -3,7 +3,7 @@
 * @author ZS@ZJU
 * @version V1.0
 */
-package reload;
+package overloading;
 
 import java.io.Serializable;
 
@@ -53,7 +53,7 @@ public static void say(Comparable arg) {
 
 由此可见，变长参数的优先级是最低的。
 */
-public class Reload_test {
+public class Overload_test {
  // Object 参数
     public static void say(Object arg) {
         System.out.println("hello object");
