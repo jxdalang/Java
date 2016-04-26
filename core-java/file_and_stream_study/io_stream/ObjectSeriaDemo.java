@@ -8,7 +8,7 @@ package io_stream;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
-public class ObjectSeriaDemo1 {
+public class ObjectSeriaDemo {
     public static void main(String[] args) throws Exception{
         String file = "obj.dat";
         //1.对象的序列化
