@@ -46,7 +46,7 @@ public class EnergySystem {
             }
 
             // 实际转移能量的代码
-            System.out.print(Thread.currentThread().getName()+":   ");
+            System.out.print(Thread.currentThread().getName() + ":   ");
             energyBoxes[from] -= amount;
             System.out.printf("从%d转移%.2f单位能量到%d", from, amount, to);
             energyBoxes[to] += amount;
@@ -54,7 +54,8 @@ public class EnergySystem {
 
             // 唤醒所有在lockObj对象上等待的线程
             lockObj.notifyAll();
-        }
+
+        } // end of synchronized block
 
     }
 

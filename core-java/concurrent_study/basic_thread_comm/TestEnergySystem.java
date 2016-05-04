@@ -15,5 +15,4 @@ public class TestEnergySystem {
             t.start();
         }
     }
-
 }

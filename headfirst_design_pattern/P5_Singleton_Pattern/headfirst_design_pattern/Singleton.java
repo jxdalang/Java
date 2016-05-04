@@ -22,7 +22,7 @@ public class Singleton {
     public Singleton getInstance() {
         if (uniqueInstance == null)
             synchronized (Singleton.class) {
-                if (uniqueInstance == null) // 再次检查
+                if (uniqueInstance == null) // 再次检查，这是因为进入同步块的过程中可能有其他线程已经创建了单例
                     uniqueInstance = new Singleton();
             }
         return uniqueInstance;

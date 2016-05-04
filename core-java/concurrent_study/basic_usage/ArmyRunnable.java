@@ -16,6 +16,7 @@ public class ArmyRunnable implements Runnable {
                 System.out.println(Thread.currentThread().getName() + "进攻对方[" + i + "]");
                 // 让出了处理器时间，下次该谁进攻还不一定呢！
                 Thread.yield();
+                // 即使这里不使用yield主动让出CPU，当该线程用完当前CPU的时间片时，CPU也是有可能会选择其他线程来执行的
             }
         }
 
