@@ -1,4 +1,4 @@
-package basic_thread_comm;
+package basic_thread_communication;
 
 public class TestEnergySystem {
 

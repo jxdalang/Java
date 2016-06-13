@@ -5,7 +5,7 @@ package basic_usage;
 public class ArmyRunnable implements Runnable {
 
     // volatile保证了线程可以正确的读取其他线程写入的值
-    // 可见性 ref JMM， happens-before原则
+    // 可见性: refer to JMM， happens-before原则
     volatile boolean keepRunning = true;
 
     @Override

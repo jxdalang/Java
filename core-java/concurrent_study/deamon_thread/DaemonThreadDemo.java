@@ -34,7 +34,7 @@ public class DaemonThreadDemo {
         daemon.setDaemon(true); // 设置为守护线程
         daemon.start();
 
-        // 一旦主线程接（main）收到用户输入，就会执行完毕（结束）
+        // 一旦主线程（main）接收到用户输入，就会执行完毕（结束）
         Scanner in = new Scanner(System.in);
         in.next();
 
