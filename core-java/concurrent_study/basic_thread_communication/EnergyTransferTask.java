@@ -17,6 +17,7 @@ public class EnergyTransferTask implements Runnable {
         this.maxAmount = max;
     }
 
+    @Override
     public void run() {
         try {
             while (true) {

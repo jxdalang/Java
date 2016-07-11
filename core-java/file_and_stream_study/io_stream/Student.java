@@ -8,6 +8,10 @@ package io_stream;
 import java.io.Serializable;
 
 public class Student implements Serializable{
+    /**
+    * @fields serialVersionUID TODO
+    */
+    private static final long serialVersionUID = 3770549004090347380L;
     private String stuno;
     private String stuname;
     //该元素不会进行jvm默认的序列化,也可以自己完成这个元素的序列化
