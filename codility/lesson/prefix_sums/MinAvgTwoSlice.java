@@ -53,8 +53,8 @@ Elements of input arrays can be modified.
 */
 public class MinAvgTwoSlice {
     /**
-     Every slice must be of length two or three.
-     Slices of bigger lengths are created from such smaller slices.
+     !!!Every slice can be created by sub-slice of length two or three!!!
+     
      Therefore should any bigger slice have an optimal value,
      all sub-slices must be the same, for this case to hold true.
      
