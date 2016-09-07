@@ -8,6 +8,8 @@ package overloading;
 import java.io.Serializable;
 
 /**
+ * 重载
+
 如果直接运行的话，毫无疑问，输出为： hello char
 如果将char参数的函数注释之后，会输出什么呢？
 
@@ -33,14 +35,9 @@ import java.io.Serializable;
 
 这什么东西嘛。。。怎么会输出这个家伙啊。。。。原来是因为Character实现了Serializable接口，当它找不到匹配的类型之后，就会找它所实现的接口。但是，如果我们再增加一个重载函数：
 
-?
-1
-2
-3
 public static void say(Comparable arg) {
        System.out.println("hello Comparable");
 }
-
 
 那么就会报错了， 因为Character实现了Serializable和Comparable这两个接口，而接口匹配的优先级是一样的，编译器无法判断转型为哪种类型，提示类型模糊，拒绝编译。
 好，继续注释掉Serializable参数的函数，看输出：hello object
@@ -54,44 +51,42 @@ public static void say(Comparable arg) {
 由此可见，变长参数的优先级是最低的。
 */
 public class Overload_test {
- // Object 参数
+    // Object 参数
     public static void say(Object arg) {
         System.out.println("hello object");
     }
-     
-     
+
     // int 参数
     public static void say(int arg) {
         System.out.println("hello int");
     }
-     
-    // long 参数 
+
+    // long 参数
     public static void say(long arg) {
         System.out.println("hello long");
     }
-     
+
     // char 参数
     public static void say(char arg) {
         System.out.println("hello char");
     }
-     
+
     // Character 参数
     public static void say(Character arg) {
         System.out.println("hello character");
     }
-     
+
     // 变长参数
     public static void say(char... arg) {
         System.out.println("hello char...");
     }
-     
+
     // Serializable 参数
     public static void say(Serializable arg) {
         System.out.println("hello serializable");
     }
-     
-     
+
     public static void main(String[] args) {
-               say('a');
+        say('a');
     }
 }
