@@ -14,6 +14,7 @@ package headfirst_design_pattern;
 public final class Singleton {
     private static volatile Singleton uniqueInstance = null;
 
+    // private constructor preventing new instances being created
     private Singleton() {
     }
 
@@ -28,7 +29,7 @@ public final class Singleton {
     }
 
     // 2> an alternate simpler and cleaner version
-    // potentially lower concurrency in a multithreaded environment:
+    // potentially lower concurrency in a multi-threaded environment:
     public static synchronized Singleton getInstance2() {
         if (uniqueInstance == null) {
             uniqueInstance = new Singleton();
