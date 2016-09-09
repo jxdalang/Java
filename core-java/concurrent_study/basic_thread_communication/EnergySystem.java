@@ -9,7 +9,9 @@ public class EnergySystem {
 
     // 能量盒子，能量存贮的地方
     private final double[] energyBoxes;
-    private final Object lockObj = new Object();
+    // private final Object lockObj = new Object();
+    // 零长度的byte数组对象创建起来将比任何对象都经济
+    private final byte[] lockObj = new byte[0];
 
     /**
      * 
@@ -30,6 +32,8 @@ public class EnergySystem {
      */
     public void transfer(int from, int to, double amount) {
 
+        // 也可以不用lockObj，转而锁住this/把transfer方法变为synchronized方法
+        // !!其最终目的都是使某个EnergySystem的实例的transfer方法在同一时间只能被一个线程执行
         synchronized (lockObj) {
 
             // if (energyBoxes[from] < amount)
