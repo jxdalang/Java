@@ -50,7 +50,7 @@ public final class Singleton {
      * {@link SingletonHolder} is loaded on the first execution of {@link Singleton#getInstance()} 
      * or the first access to {@link SingletonHolder#INSTANCE}, not before.
      */
-    private static class SingletonHolder {
+    private static class SingletonHolder { // 静态内部类
         private static final Singleton INSTANCE = new Singleton();
     }
 

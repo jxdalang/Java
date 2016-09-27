@@ -1,30 +1,28 @@
 import java.util.Scanner;
 
 public class Main4 {
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int m = in.nextInt();
-        in.nextLine();
-        String[] line = new String[n];
-        for (int i = 0; i < n; i++) {
-            line[i] = in.nextLine();
-        }
+
+        int x = in.nextInt();
+        int y = in.nextInt();
+
         in.close();
-        int[][] value = new int[n][m];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                value[i][j] = line[i].charAt(j) - '0';
-            }
-        }
-        
-        
-        
-        
-        
-        
+
+        System.out.print(rev(rev(x) + rev(y)));
 
     }
 
+    private static int rev(int x) {
+        int res = 0;
+
+        while (x > 0) {
+            int digit = x % 10;
+            x = x / 10;
+
+            res = res * 10 + digit;
+        }
+
+        return res;
+    }
 }
