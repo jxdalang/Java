@@ -1,4 +1,4 @@
-# Java
+# Java-practice
 
 - simple java projects
 - OJ-solutions
